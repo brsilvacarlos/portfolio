@@ -1,16 +1,45 @@
 <template>
-  <div id="app">
+<div id="app">
+  <transition appear appear-to-class="animated slideInUp">
     <MenuPrincipal></MenuPrincipal>
+  </transition>
+  <transition appear appear-to-class="animated slideInUp">
     <router-view></router-view>
-  </div>
+  </transition>
+</div>
 </template>
 
 <script>
-  import MenuPrincipal from '@/components/MenuPrincipal'
-  export default {
-    name: 'app',
-    components: {MenuPrincipal}
+import MenuPrincipal from '@/components/MenuPrincipal'
+export default {
+  name: 'app',
+  components: {
+    MenuPrincipal
+  },
+  beforeCreate() {
+    this.$Spin.show({
+      render: (h) => {
+        return h('div', [
+          h('Icon', {
+            'class': 'demo-spin-icon-load',
+            props: {
+              type: 'ios-loading',
+              size: 18
+            }
+          }),
+          h('div', 'Loading')
+        ])
+      }
+    });
+  },
+  created() {
+    // this.$Spin.hide();
+    setTimeout(() => {
+        this.$Spin.hide();
+      }, 100);
+    
   }
+}
 </script>
 
 <style>

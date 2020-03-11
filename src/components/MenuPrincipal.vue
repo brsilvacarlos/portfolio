@@ -1,14 +1,18 @@
 <template>
     <div>
         <Affix>
-            <Menu mode="horizontal" :theme="dark" active-name="1">
-                <MenuItem name="1">
+            <Menu mode="horizontal" :theme="'dark'" active-name="1">
+                <MenuItem name="1" to="/sobre">
                     <Icon type="ios-paper" />
-                    内容管理
+                    Sobre Mim
                 </MenuItem>
-                <MenuItem name="2">
+                <MenuItem name="2" to="habilidades">
                     <Icon type="ios-people" />
-                    用户管理
+                    Habilidades
+                </MenuItem>
+                <MenuItem name="3" to="contato">
+                    <Icon type="ios-people" />
+                    Contato
                 </MenuItem>
             </Menu>
         </Affix>

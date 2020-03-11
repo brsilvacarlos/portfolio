@@ -5,6 +5,7 @@ import VueRouter from "vue-router";
 import Routers from "./router.js";
 import ViewUI from "view-design";
 import "view-design/dist/styles/iview.css";
+import "animate.css/animate.css";
 
 Vue.use(VueRouter);
 Vue.use(ViewUI);
