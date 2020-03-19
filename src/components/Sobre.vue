@@ -8,13 +8,10 @@
         <Row>
             <Col span="6" offset="8">
                 <Timeline>
-                    <TimelineItem>
-                        <p class="time">2013 - 2016</p>
-                        <p class="content">PlataformaNet Mídia Online</p>
-                    </TimelineItem>
-                    <TimelineItem>
-                        <p class="time">2016 - Presente</p>
-                        <p class="content">Élin Duxus Consultoria</p>
+                    <TimelineItem v-for="(itemHistorico, index) in historico" :key="index">
+                        <p class="time">{{itemHistorico.periodo}}</p>
+                        <p class="content">Empresa: <a v-bind:href="itemHistorico.link">{{itemHistorico.empresa}}</a> </p>
+                        <p class="content">Cargo: {{itemHistorico.cargo}}</p>
                     </TimelineItem>
                 </Timeline>
             </Col>
@@ -24,6 +21,36 @@
 
 <script>
 export default {
+    data(){
+        return {
+            'historico': [
+                {
+                    'periodo': '2015 - 2016',
+                    'empresa': 'PlataformaNet Mídia Online',
+                    'cargo': 'Analista de Suporte Jr.',
+                    'link': 'https://plataformanet.com.br/',
+                },
+                {
+                    'periodo': '2016 - 2017',
+                    'empresa': 'PlataformaNet Mídia Online',
+                    'cargo': 'Programador',
+                    'link': 'https://plataformanet.com.br/',
+                },
+                {
+                    'periodo': '2017 - 2019',
+                    'empresa': 'Élin Duxus Consultoria',
+                    'cargo': 'Analista de Sistemas Jr.',
+                    'link': 'http://www.duxus.com.br/',
+                },
+                {
+                    'periodo': '2019 - Atual',
+                    'empresa': 'Élin Duxus Consultoria',
+                    'cargo': 'Analista de Sistemas Pleno',
+                    'link': 'http://www.duxus.com.br/',
+                }
+            ]
+        }
+    } 
     
 }
 </script>
