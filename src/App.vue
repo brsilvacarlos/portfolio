@@ -1,17 +1,43 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<div id="app">
+  <transition appear appear-to-class="animated slideInUp">
+    <MenuPrincipal></MenuPrincipal>
+  </transition>
+  <transition appear appear-to-class="animated slideInUp">
+    <router-view></router-view>
+  </transition>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import MenuPrincipal from '@/components/MenuPrincipal'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    MenuPrincipal
+  },
+  beforeCreate() {
+    this.$Spin.show({
+      render: (h) => {
+        return h('div', [
+          h('Icon', {
+            'class': 'demo-spin-icon-load',
+            props: {
+              type: 'ios-loading',
+              size: 18
+            }
+          }),
+          h('div', 'Loading')
+        ])
+      }
+    });
+  },
+  created() {
+    // this.$Spin.hide();
+    setTimeout(() => {
+        this.$Spin.hide();
+      }, 100);
+    
   }
 }
 </script>
@@ -23,6 +49,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
